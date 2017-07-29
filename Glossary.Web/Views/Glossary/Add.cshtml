@@ -1,0 +1,13 @@
+﻿@model Glossary.Web.Models.GlossaryTermViewModel
+@{
+    ViewBag.Title = "Add a New Term";
+}
+
+<h2>@ViewBag.Title</h2>
+<br/>
+
+        @using (Html.BeginForm("Add", "Glossary"))
+        {
+            Html.RenderPartial("_EditGlossaryTerm",Model);
+        }
+

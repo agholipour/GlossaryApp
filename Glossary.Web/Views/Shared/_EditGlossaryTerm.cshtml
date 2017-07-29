@@ -1,0 +1,28 @@
+﻿@model Glossary.Web.Models.GlossaryTermViewModel
+
+<div class="container">
+        
+     @Html.HiddenFor(x => x.Id)
+            <div class="row form-group">
+                @Html.LabelFor(x => x.Term, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.Term, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Term)
+                </div>
+            </div>
+            <div class="row form-group">
+                @Html.LabelFor(x => x.Definition, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(x => x.Definition, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Definition)
+                </div>
+            </div>
+            <div class="row form-group" style="margin-top:50px">
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-default">Return</button>
+                </div>
+            </div>
+
+
+</div>

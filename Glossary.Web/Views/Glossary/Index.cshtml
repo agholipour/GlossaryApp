@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Glossary.Web.Models.GlossaryTermViewModel>
+
+@{
+    ViewBag.Title = "Glossary Terms";
+}
+<div class="container">
+    <div class="row" style="margin-top:50px">
+        <div class="pull-right">
+            <a href="@Url.Action("Add", "Glossary")" class="btn btn-success btn-md">
+                Create
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+    <div class="row" style="margin-top:20px">
+        <table class="table table-hover table-striped table-responsive table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(x => item.Term)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.Definition)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Glossary" , new {glossaryTermId=@item.Id})" class="btn btn-default btn-sm edit">
+                                Edit
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#"  class="btn btn-danger btn-sm delete" data-id="@item.Id">
+                                Delete
+                                <span class="glyphicon glyphicon-minus-sign"></span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var editUrl ="@Url.Action("Save", "Glossary")";
+            var deleteUrl ="@Url.Action("Delete", "Glossary")";
+            glossaryAltering.init(editUrl,deleteUrl);
+        });
+    </script>
+}
